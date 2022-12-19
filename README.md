@@ -44,7 +44,7 @@ BDD: Postgres
 - [X] definition et creation du model de la BDD
 - [X] créer api /book/
 - [x] discover fastapi & sqlalchemy
-- [] créer api /author/
-- [] créer api /loan/
-- [] livrables: shema UML & dump bdd
-- [] créer api recherche de livre
+- [ ] créer api /author/
+- [ ] créer api /loan/
+- [ ] livrables: shema UML & dump bdd
+- [ ] créer api recherche de livre
