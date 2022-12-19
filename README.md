@@ -23,6 +23,7 @@ Bonus : 
 
     Gestion de l’authentification
 
+
 # terminus_library
 
 ORM: SQLALchemy
@@ -36,3 +37,14 @@ BDD: Postgres
 ```docker build -t terminus . ```
 
 ```docker compose up srv```
+
+## TODO:
+- [X] ops (install env)
+- [X] Connexion sqlalchemy <-> postgres
+- [X] definition et creation du model de la BDD
+- [X] créer api /book/
+- [x] discover fastapi & sqlalchemy
+- [] créer api /author/
+- [] créer api /loan/
+- [] livrables: shema UML & dump bdd
+- [] créer api recherche de livre
