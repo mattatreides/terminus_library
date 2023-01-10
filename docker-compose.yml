@@ -14,10 +14,12 @@ services:
       - "data-db:/var/lib/postgresql/data"
   srv:
     image: terminus
+    environment:
+      - PYTHONDONTWRITEBYTECODE="True"
     volumes:
-      - ./app:/code/app
+    - ./app:/code/app
     ports: 
-      - 80:80
+      - 88:80
     depends_on:
       - db
 

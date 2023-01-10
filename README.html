@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>terminus&lowbar;library</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension ms-toolsai.jupyter */
+/* These classnames are inherited from bootstrap, but are present in most notebook renderers */
+
+.alert {
+    width: auto;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.alert > *:last-child {
+    margin-bottom: 0;
+}
+#preview > .alert:last-child {
+    /* Prevent this being set to zero by the default notebook stylesheet */
+    padding-bottom: 1em;
+}
+
+.alert-success {
+    /* Note there is no suitable color available, so we just copy "info" */
+    background-color: var(--theme-info-background);
+    color: var(--theme-info-foreground);
+}
+.alert-info {
+    background-color: var(--theme-info-background);
+    color: var(--theme-info-foreground);
+}
+.alert-warning {
+    background-color: var(--theme-warning-background);
+    color: var(--theme-warning-foreground);
+}
+.alert-danger {
+    background-color: var(--theme-error-background);
+    color: var(--theme-error-foreground);
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="terminus_library">terminus_library</h1>
+<p><strong>ORM</strong>: SQLALchemy</p>
+<p><strong>Framework web</strong>: FastAPI</p>
+<p><strong>BDD</strong>: Postgres</p>
+<h3 id="how-it-works">How it works</h3>
+<p><em>Build docker image:</em>
+<code>docker build . --no-cache -t terminus</code></p>
+<p><em>run the server</em>
+<code>*docker-compose up*</code></p>
+<p>*(The database is create automaticly, default name as terminus_bookcase)</p>
+<p><em>Connect to DB</em>
+<code>docker exec -it terminus_library-db-1 psql -U tech terminus_bookcase</code></p>
+<p><em>Delete database:</em></p>
+<p><code>docker exec -it terminus_library-db-1 psql -U tech -c 'DROP DATABASE terminus_bookcase;'</code></p>
+<p><em>Init demo data</em>
+<code>scripts/init\_demo\_data.sh</code></p>
+<p><em>Get Books</em>:
+curl <a href="http://localhost:88/books/">http://localhost:88/books/</a> | json_pp</p>
+<p><em>Add Author</em></p>
+<pre><code>curl -d \
+  '{&quot;id&quot;: 1, 
+    &quot;name&quot;:&quot;Asimov&quot;, 
+    &quot;firstname&quot;: &quot;Isaac&quot;, 
+    &quot;country&quot;: &quot;US&quot;}' \
+  -H &quot;Content-Type: application/json&quot; -X \
+  POST http://localhost:88/author/
+</code></pre>
+<p><em>Add Book</em></p>
+<pre><code>curl -d \
+  '{&quot;id&quot;: 1,
+    &quot;title&quot;:&quot;fondation&quot;,
+    &quot;description&quot;: &quot;livre de SF&quot;,
+    &quot;author_id&quot;: 1,
+    &quot;author&quot;: &quot;Isaac Asimov&quot;}' \
+  -H &quot;Content-Type: application/json&quot; -X \
+  POST http://localhost:88/book/
+</code></pre>
+
+        
+        
+    </body>
+    </html>

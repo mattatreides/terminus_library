@@ -9,7 +9,7 @@ from db.session import engine
 # Base.metadata.create_all(bind=engine)
 
 from sqlalchemy.orm import Session
-from db.base import Base
+from app.db.base import Base
 
 def init_db(db: Session) -> None:
 
